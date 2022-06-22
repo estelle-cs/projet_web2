@@ -18,7 +18,6 @@
         return $Bdd;
     }
 
-    
 
 ?> 
 <!DOCTYPE html>
