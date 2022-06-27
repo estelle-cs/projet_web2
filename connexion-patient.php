@@ -40,6 +40,19 @@ if(isset($_POST["email"]))
         echo '<script language="Javascript"> alert ("L\'identifiant saisi est incorrect ! Veuillez réessayer !" ) </script>';
       }
     }
+    if(isset($_SESSION["id"])){
+      switch ($_SESSION["userType"]){
+        case 1:
+          return header('Location: moncompte-docteur.php');
+          break;
+        case 2:
+          return header('Location: moncompte-secretaire.php');
+          break;
+        case 3:
+          return header('Location: moncompte-patient.php');
+          break;
+      }
+    }
 
 ?>
 <!DOCTYPE html>

@@ -7,7 +7,6 @@
     { 
         if($_POST["mdp"]!=$_POST["mdp2"]){
             echo '<script language="Javascript"> alert ("Les 2 mots de passe ne sont pas identiques!" ) </script>';
-            return;
         }
       //Vérification de l'e-mail saisie
       $email = $_POST["email"];
@@ -45,6 +44,19 @@
         }else{
 			echo '<script language="Javascript"> alert ("Des champs obligatoires ne sont pas remplis" ) </script>';
 		}
+      }
+    }
+    if(isset($_SESSION["id"])){
+      switch ($_SESSION["userType"]){
+        case 1:
+          return header('Location: moncompte-docteur.php');
+          break;
+        case 2:
+          return header('Location: moncompte-secretaire.php');
+          break;
+        case 3:
+          return header('Location: moncompte-patient.php');
+          break;
       }
     }
 ?>

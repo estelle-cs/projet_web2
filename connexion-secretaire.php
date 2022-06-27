@@ -40,6 +40,19 @@ if(isset($_POST["email"]))
         echo '<script language="Javascript"> alert ("L\'identifiant saisi est incorrect ! Veuillez réessayer !" ) </script>';
       }
     }
+    if(isset($_SESSION["id"])){
+      switch ($_SESSION["userType"]){
+        case 1:
+          return header('Location: moncompte-docteur.php');
+          break;
+        case 2:
+          return header('Location: moncompte-secretaire.php');
+          break;
+        case 3:
+          return header('Location: moncompte-patient.php');
+          break;
+      }
+    }
 
 ?>
 <!DOCTYPE html>
@@ -87,7 +100,7 @@ if(isset($_POST["email"]))
         </form>
     </div>
     <div class="contbox">
-    <p>Pour s'inscrire, demandez au personnel.</p><br>
+    <h3>Pour s'inscrire, demandez au personnel.<h3><br>
     <div class="flexline">
     <a href="connexion-patient.php" class="primary switchuser">Vous êtes un patient?</a><br>
     <a href="connexion-docteur.php"class="primary switchuser">Vous êtes un docteur?</a><br>
