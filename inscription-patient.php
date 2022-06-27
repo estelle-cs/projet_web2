@@ -103,7 +103,7 @@
             <input type="text" name="surname" placeholder="Prénom" required><br>
             <input type="date" name="birthDate" placeholder="Date de naissance" required><br>
             <input type="tel" name="tel" placeholder="N° de téléphone" required><br>
-            <input type="text" placeholder="Numéro de sécu" name="numSecu" required><br>
+            <input type="text" placeholder="Numéro de sécurité sociale" name="numSecu" required><br>
             <div class="radiocont">
               <input type="radio" name="genreBiologique" value="0" id="homme" required>
               <label for="homme">Homme</label>
