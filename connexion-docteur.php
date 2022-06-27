@@ -3,6 +3,19 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 include("bdd.php");
+if(isset($_SESSION["id"])){
+  switch ($_SESSION["userType"]){
+    case 1:
+      return header('Location: moncompte-docteur.php');
+      break;
+    case 2:
+      return header('Location: moncompte-secretaire.php');
+      break;
+    case 3:
+      return header('Location: moncompte-patient.php');
+      break;
+  }
+}
 if(isset($_POST["email"]))
     { 
       //Vérification de l'e-mail saisie
@@ -22,7 +35,8 @@ if(isset($_POST["email"]))
           {
             // Le mdp saisie est correct et correspond bien à l'email de l'user
 			$_SESSION['id']=$usr->id;
-            echo '<script language="Javascript"> alert ("Connexion réussie! (A rediriger vers la page mais elle existe pas encore)" ) </script>';
+      $_SESSION['userType']=$usr->userType;
+      header('Location: moncompte-docteur.php');
 
             exit;        
           }
@@ -48,18 +62,50 @@ if(isset($_POST["email"]))
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Connexion</title>
+    <link rel="stylesheet" href="page-compte.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@100&display=swap" rel="stylesheet"> 
 </head>
 <body>
+<header class="navbar">
+      <h1>MesDocs</h1>
+      <div></div>
+      <a class="primary switchuser" href="<?php
+      if(!isset($_SESSION['id'])){
+        echo "connexion-patient.php";
+        
+      }else{
+        echo "moncompte-patient.php";
+      }
+      ?>">
+      <?php
+      if(!isset($_SESSION['id'])){
+        echo "Se connecter";
+        
+      }else{
+        echo "Mon compte";
+      }
+      ?>
+    </a>
+      
+
+</header>
     <div class="contbox">
+      <h1>Connectez-vous à votre compte docteur</h1>
         <form action="" method="POST">
-            <input type="email" placeholder="email" name="email" required><br>
+            <input type="email" placeholder="E-mail" name="email" required><br>
             <input type="password" placeholder="Mot de passe" name="mdp" required><br>
-            <input type="submit">
+            <input type="submit" value="Connexion docteur">
         </form>
+        <h3>Pour s'inscrire, demandez au personnel.</h3><br>
     </div>
-    <p>Pour s'inscrire, demandez au personnel.</p><br>
-    <a href="connexion-patient.php">Vous êtes un patient?</a><br>
-    <a href="connexion-secretaire.php">Vous êtes un secrétaire?</a><br>
+    <div class="contbox">
+    <div class="flexline">
+    <a href="connexion-patient.php" class="primary switchuser">Vous êtes un patient?</a><br>
+    <a href="connexion-secretaire.php"class="primary switchuser">Vous êtes un secrétaire?</a><br>
+    </div>
+    </div>
 
 </body>
 </html>

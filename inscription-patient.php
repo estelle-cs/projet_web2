@@ -54,9 +54,37 @@
 <head>
 	<title>Inscription</title>
 	<meta charset="UTF-8">
+  <link rel="stylesheet" href="page-compte.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@100&display=swap" rel="stylesheet"> 
 </head>
 <body>
+<header class="navbar">
+      <h1>MesDocs</h1>
+      <div></div>
+      <a class="primary switchuser" href="<?php
+      if(!isset($_SESSION['id'])){
+        echo "connexion-patient.php";
+        
+      }else{
+        echo "moncompte-patient.php";
+      }
+      ?>">
+      <?php
+      if(!isset($_SESSION['id'])){
+        echo "Se connecter";
+        
+      }else{
+        echo "Mon compte";
+      }
+      ?>
+    </a>
+      
+
+</header>
 <div class="contbox">
+      <h1>Créez votre compte patient</h1>
         <form action="" method="POST">
             <input type="email" placeholder="email" name="email" required><br>
             <input type="text" name="name" placeholder="Nom" required><br>
@@ -64,15 +92,21 @@
             <input type="date" name="birthDate" placeholder="Date de naissance" required><br>
             <input type="tel" name="tel" placeholder="N° de téléphone" required><br>
             <input type="text" placeholder="Numéro de sécu" name="numSecu" required><br>
-            <input type="radio" name="genreBiologique" value="0" id="homme" required>
-            <label for="homme">Homme</label><br>
-            <input type="radio" name="genreBiologique" value="1" id="homme" required>
-            <label for="homme">Femme</label><br>
+            <div class="radiocont">
+              <input type="radio" name="genreBiologique" value="0" id="homme" required>
+              <label for="homme">Homme</label>
+            </div>
+            <div class="radiocont">
+              <input type="radio" name="genreBiologique" value="1" id="homme" required>
+              <label for="homme">Femme</label>
+            </div>
             <input type="password" name="mdp" placeholder="Mot de passe">
             <input type="password" name="mdp2" placeholder="Retaper le mot de passe"><br>
             <input type="submit"><br>
         </form>
-        <a href="connexion-patient.php">Page connexion</a>
+        <div class="contbox">
+        <a href="connexion-patient.php" class="primary switchuser">Retour à la page connexion</a>
+        </div>
     </div>
 </body>
 </html>

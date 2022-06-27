@@ -1,0 +1,77 @@
+body {
+    margin:0;
+    margin-bottom: 15px;
+    padding:0;
+    background-color:#D1F7FF;
+    font-family: Sarabun;
+}
+.navbar {
+    position: sticky;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    background-color: #00D1FF;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
+    z-index: 1; /*la navbar est passé au dessus du backdrop */
+    margin-bottom: 20px;
+    align-items: baseline;
+  }
+input,button.primary, a.primary{
+    background: transparent;
+    border: none;
+    border-left: 1px solid rgba(255, 255, 255, .3);
+    border-top: 1px solid rgba(255, 255, 255, .3);
+    padding: 1rem;
+    width: 250px;
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    -moz-backdrop-filter: blur(5px);
+    box-shadow: 4px 4px 60px rgba(0, 0, 0, .2);
+    color: black;
+    font-weight: 500;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, .2);
+    transition: all .3s;
+    margin-bottom: 1.5em;
+    width:auto;
+}
+
+.contbox{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+.flexline{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+}
+form{
+    padding: 30px;
+    background-color: white;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width:20rem
+}
+button, input[type=submit], .primary{
+    background-color: #FFE600 !important;
+    text-decoration: none;
+    margin: 5px;
+}
+.radiocont{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: flex-start;
+
+}
+.switchuser{
+    background-color: white !important;
+}
+.textsep{
+    margin-top: 20px;
+}
